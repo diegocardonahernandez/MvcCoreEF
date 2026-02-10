@@ -1,0 +1,40 @@
+﻿@model List<Hospital>
+
+    <h1>Hospitales EF</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Direccion</th>
+                <th>Teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach(Hospital hospital in Model)
+        {
+            <tr>
+                <td>@hospital.Nombre</td>
+                <td>@hospital.Direccion</td>
+                <td>@hospital.Telefono</td>
+                <td>
+                    <a class="btn btn-outline-success"
+                    asp-controller="Hospitales"
+                    asp-action="Details"
+                    asp-route-id="@hospital.IdHospital">Detalles</a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-danger" 
+                    asp-controller="Hospitales" asp-action="Delete" asp-route-id="@hospital.IdHospital">
+                Eliminar</a>
+
+                <a class="btn btn-outline-primary" 
+                asp-controller="Hospitales" asp-action="Edit" asp-route-id="@hospital.IdHospital">
+            Editar</a>
+
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
